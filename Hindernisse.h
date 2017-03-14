@@ -8,6 +8,8 @@
 #ifndef HINDERNISSE_H_
 #define HINDERNISSE_H_
 
+#include<GL/glut.h>
+
 class Hindernisse {
 public:
 	Hindernisse();

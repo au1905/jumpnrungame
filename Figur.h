@@ -8,6 +8,8 @@
 #ifndef FIGUR_H_
 #define FIGUR_H_
 
+#include<GL/glut.h>
+
 class Figur {
 public:
 	Figur();
