@@ -9,6 +9,7 @@
 #include <iostream>
 #include <map>
 #include "Imageloader.h"
+#include "Figur.h"
 
 
 using namespace std;
@@ -19,6 +20,7 @@ void tasteDruck(unsigned char key, int, int);
 void tasteLos(unsigned char key, int, int);
 
 int zeit = 0;
+Figur* figur;
 
 std::map<std::string, GLuint> Texturen;
 
@@ -55,6 +57,8 @@ int main(int argc, char*argv[]) {
 	glutIdleFunc(timerEvent); //Animationen
 
 	ladeTextur("src/figur.bmp");
+	figur = new Figur(0, 0, Texturen["figur.bmp"]);
+
 
 	glutMainLoop(); //Hauptschleife
 
@@ -74,6 +78,7 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	//TODO display()
+
 
 	glFlush();
 }

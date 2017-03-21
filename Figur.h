@@ -1,19 +1,24 @@
 /*
  * Figur.h
  *
- *  Created on: 07.03.2017
- *      Author: nopper06
+ *  Created on: Feb 12, 2017
+ *      Author: Hocceruser
  */
 
-#ifndef FIGUR_H_
-#define FIGUR_H_
+#ifndef FIGUR_H
+#define FIGUR_H
 
-#include<GL/glut.h>
+#include "Object.h"
 
-class Figur {
+class Figur: public Object {
 public:
-	Figur();
+	Figur(double x, double y, GLuint texturNr);
 	virtual ~Figur();
+
+private:
+	void initFlat(
+			GLfloat dirx,  GLfloat, GLfloat dirz,
+			int shift);
 };
 
-#endif /* FIGUR_H_ */
+#endif /* Figur_H_ */
