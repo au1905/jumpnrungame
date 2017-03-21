@@ -6,6 +6,10 @@
 // Description : Hello World in C++, Ansi-style
 //============================================================================
 #include<GL/glut.h>
+#include <iostream>
+#include <map>
+#include "Imageloader.h"
+
 
 using namespace std;
 
@@ -15,6 +19,27 @@ void tasteDruck(unsigned char key, int, int);
 void tasteLos(unsigned char key, int, int);
 
 int zeit = 0;
+
+std::map<std::string, GLuint> Texturen;
+
+void ladeTextur(std::string filename) {
+	// Lade das Bild in das Objekt image
+	Image* myImage = loadBMP(filename.c_str());
+	GLuint textureNr = 0;
+	// Lege das Bild als Textur an.
+	glEnable(GL_TEXTURE_2D);
+	glGenTextures(1, &textureNr);
+	glBindTexture(GL_TEXTURE_2D, textureNr);
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, myImage->width, myImage->height, 0,
+	GL_RGB, GL_UNSIGNED_BYTE, myImage->pixels);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //GL_NEAREST);//
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	Texturen[filename] = textureNr;
+	std::cout << "Bild '" << filename << "' geladen, ist jetzt Textur Nr. "
+			<< Texturen[filename] << std::endl;
+}
 
 int main(int argc, char*argv[]) {
 	glutInit(&argc, argv); //Generiere das OpenGL-Fenster
@@ -29,9 +54,13 @@ int main(int argc, char*argv[]) {
 
 	glutIdleFunc(timerEvent); //Animationen
 
+	ladeTextur("src/figur.bmp");
+
 	glutMainLoop(); //Hauptschleife
 
 }
+
+
 
 void tasteDruck(unsigned char key, int, int) {
 	//TODO tasteDruck
