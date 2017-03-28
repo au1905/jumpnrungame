@@ -112,5 +112,5 @@ Figur::Figur(double x, double y,
 }
 
 Figur::~Figur() {
-	// TODO Auto-generated destructor stub
+
 }

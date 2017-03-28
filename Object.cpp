@@ -17,7 +17,7 @@ Object::Object(double x, double y, GLuint textureNr) :
 
 
 Object::~Object() {
-	// TODO Auto-generated destructor stub
+
 }
 
 void Object::Display() const {
