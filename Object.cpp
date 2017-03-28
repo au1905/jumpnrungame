@@ -8,7 +8,7 @@
 
 #include "Object.h"
 
-Object::Object(double x, double y, GLuint textureNr) :
+Object::Object(double x, double y, double sizeX, double sizeY, GLuint textureNr) :
 		_x(x), _y(y), _textureNr(textureNr) {
 
 	_displaylistNr = glGenLists(1);
@@ -24,16 +24,16 @@ Object::Object(double x, double y, GLuint textureNr) :
 	std::vector<GLuint> indices(0);
 
 
-	push(vertices, 1, 1);
+	push(vertices, sizeX, sizeY);
 	push(textures, 1, 1);
 
-	push(vertices, 0, 1);
+	push(vertices, 0, sizeY);
 	push(textures, 0, 1);
 
 	push(vertices, 0, 0);
 	push(textures, 0, 0);
 
-	push(vertices, 1, 0);
+	push(vertices, sizeX, 0);
 	push(textures, 1, 0);
 
 

@@ -9,10 +9,11 @@
 #define Object_H_
 
 #include <vector>
+#include <GL/glut.h>
 
 class Object {
 public:
-	Object(double x, double y, GLuint textureNr);
+	Object(double x, double y, double sizeX, double sizeY, GLuint textureNr);
 
 
 	virtual ~Object();

@@ -11,7 +11,7 @@
 
 Figur::Figur(double x, double y,
 		GLuint texturNr) :
-		Object(x, y, texturNr) {
+		Object(x, y, 0.3, 0.4, texturNr) {
 
 }
 
