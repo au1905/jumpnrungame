@@ -1,0 +1,13 @@
+//Hier können TODOs und Diskussionen eingetragen werden.
+//Wenn ihr ein TODO bearbeitet oder fertig habt, am Besten kurz hier eintragen, damit nicht mehrere gleichzeitig am Gleichen programmieren.
+//Wenn euch noch andere TODOs einfallen, einfach hinzufügen.
+
+
+TODO: Das Bild "figur.bmp" muss zugeschnitten und die Ecken müssen trasparent werden (bisher wird ein schwarzes Quadrat um die Figur gezeichnet)
+TODO: Auf Tastatureingaben reagieren
+TODO: Die Figur in TimerEvent bewegen (einfach die Variablen _x und _y verändern)
+TODO: Bilder für Hindernisse erstellen und Hindernisse anzeigen und bewegen
+
+
+Ich habe das Ganze so weit fertig, dass die Figur und der Hintergrund angezeigt werden. 
+Für neue Objekte am besten einfach Figur.cpp kopieren.
