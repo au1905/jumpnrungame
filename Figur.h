@@ -16,9 +16,7 @@ public:
 	virtual ~Figur();
 
 private:
-	void initFlat(
-			GLfloat dirx,  GLfloat, GLfloat dirz,
-			int shift);
+
 };
 
 #endif /* Figur_H_ */
