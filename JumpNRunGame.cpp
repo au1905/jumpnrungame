@@ -57,7 +57,7 @@ int main(int argc, char*argv[]) {
 	glutIdleFunc(timerEvent); //Animationen
 
 	ladeTextur("src/figur.bmp");
-	figur = new Figur(0, 0, Texturen["figur.bmp"]);
+	figur = new Figur(0, 0, Texturen["src/figur.bmp"]);
 
 
 	glutMainLoop(); //Hauptschleife
@@ -78,7 +78,7 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	//TODO display()
-
+	figur->Display();
 
 	glFlush();
 }
