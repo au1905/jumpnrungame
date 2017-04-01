@@ -3,11 +3,28 @@
 //Wenn euch noch andere TODOs einfallen, einfach hinzufügen.
 
 
+FERTIG: Die Figur und den Hintergrund anzeigen
 TODO: Das Bild "figur.bmp" muss zugeschnitten und die Ecken müssen trasparent werden (bisher wird ein schwarzes Quadrat um die Figur gezeichnet)
 TODO: Auf Tastatureingaben reagieren
-TODO: Die Figur in TimerEvent bewegen (einfach die Variablen _x und _y verändern)
-TODO: Bilder für Hindernisse erstellen und Hindernisse anzeigen und bewegen
+TODO: Die Figur in TimerEvent() bewegen (an der Stelle mit 
+TODO: Bilder für Hindernisse erstellen und Hindernisse anzeigen 
+TODO: Die Kamera bewegen, wenn sich die Figur bewegt
 
 
 Ich habe das Ganze so weit fertig, dass die Figur und der Hintergrund angezeigt werden. 
-Für neue Objekte am besten einfach Figur.cpp kopieren.
+Für neue Objekte:
+1. Bild erstellen und mit dem Befehl
+  convert bild.jpg BMP2:bild.png
+  ins richtige Format bringen; in den Ordner src kopieren
+2. Neue Klasse erzeugen, kopiert am Besten einfach den Code von Figur.cpp und Figur.h hinein
+3. in Jumpnrungame.cpp den Code anpassen (sucht einfach mit Strg+F nach Figur, dann seht ihr, wass alles angepasst werden muss)
+4. UNBEDINGT sofort committen und pushen, sobald euer Objekt angezeigt wird! Sonst kann euer Code möglicherweise nicht verwendet werden, 
+  weil ihr nächstes Mal nicht da seit oder so! Außerdem gibt es weniger Merge Conflicts, wenn ihr häufiger pusht.
+  
+  
+Zum Pushen:
+Projekt speichern
+git diff (Zeigt eure Änderungen an)
+git add die Dateien, die ihr geändert habt (und von denen ihr die Änderungen pushen wollt)
+git commit -m "Hier muss eine aussagekräftige Beschreibung eurer Änderungen hin, schaut bei Bedarf noch einmal bei der Ausgabe von git diff nach"
+git push
