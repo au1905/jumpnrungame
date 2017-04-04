@@ -10,6 +10,7 @@
 #include <map>
 #include "Imageloader.h"
 #include "Figur.h"
+#include "Hintergrund.h"
 
 
 using namespace std;
@@ -21,6 +22,7 @@ void tasteLos(unsigned char key, int, int);
 
 int zeit = 0;
 Figur* figur;
+Hintergrund* hintergrund;
 
 std::map<std::string, GLuint> Texturen;
 
@@ -56,6 +58,9 @@ int main(int argc, char*argv[]) {
 
 	glutIdleFunc(timerEvent); //Animationen
 
+	ladeTextur("src/Hintergrund.bmp");
+	hintergrund = new Hintergrund(-1, -1, Texturen["src/Hintergrund.bmp"]);
+
 	ladeTextur("src/figur.bmp");
 	figur = new Figur(0, 0, Texturen["src/figur.bmp"]);
 
@@ -67,7 +72,9 @@ int main(int argc, char*argv[]) {
 
 
 void tasteDruck(unsigned char key, int, int) {
-	//TODO tasteDruck
+	/*if (key == 'd') {
+			TasteD = true;
+		}*/
 }
 void tasteLos(unsigned char key, int, int) {
 	//TODO tasteLos
@@ -78,7 +85,9 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	//TODO display()
+	hintergrund->Display();
 	figur->Display();
+
 
 	glFlush();
 }

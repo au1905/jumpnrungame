@@ -8,12 +8,17 @@
 #ifndef HINDERNISSE_H_
 #define HINDERNISSE_H_
 
+#include "Object.h"
 #include<GL/glut.h>
 
-class Hindernisse {
+class Hindernisse: public Object  {
 public:
-	Hindernisse();
+	Hindernisse(double x, double y, GLuint texturNr);
 	virtual ~Hindernisse();
+
+private:
 };
 
 #endif /* HINDERNISSE_H_ */
+
+

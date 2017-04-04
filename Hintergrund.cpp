@@ -1,10 +1,11 @@
 /*
- * Hindernisse.cpp
+ * Hintergrund.cpp
  *
- *  Created on: 07.03.2017
+ *  Created on: 04.04.2017
  *      Author: nopper06
  */
 
+#include "Hintergrund.h"
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/glut.h>
@@ -12,14 +13,14 @@
 #include <vector>
 #include <cmath>
 #include <string>
-#include "Hindernisse.h"
 
-Hindernisse::Hindernisse(double x, double y,
+Hintergrund::Hintergrund(double x, double y,
 		GLuint texturNr) :
-		Object(x, y, 0.3, 0.4, texturNr) {
+		Object(x, y, 2, 2, texturNr) {
 
 }
 
-Hindernisse::~Hindernisse() {
+Hintergrund::~Hintergrund() {
 	// TODO Auto-generated destructor stub
 }
+
