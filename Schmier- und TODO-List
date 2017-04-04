@@ -5,9 +5,11 @@
 
 FERTIG: Die Figur und den Hintergrund anzeigen
 TODO: Das Bild "figur.bmp" muss zugeschnitten und die Ecken müssen trasparent werden (bisher wird ein schwarzes Quadrat um die Figur gezeichnet)
+      //Wir können Bilder vorerst nur eckig abspeichern, sagte Herr Nopper
 TODO: Auf Tastatureingaben reagieren
-TODO: Die Figur in TimerEvent() bewegen (an der Stelle mit 
+TODO: Die Figur in TimerEvent() bewegen (an der Stelle mit) // ?
 TODO: Bilder für Hindernisse erstellen und Hindernisse anzeigen 
+      //Einige Hindernisse sind erstellt doch noch nicht angezeigt
 TODO: Die Kamera bewegen, wenn sich die Figur bewegt
 
 
