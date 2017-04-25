@@ -9,7 +9,7 @@ TODO: Das Bild "figur.bmp" muss zugeschnitten und die Ecken müssen trasparent w
 TODO: Auf Tastatureingaben reagieren
 TODO: Die Figur in TimerEvent() bewegen (an der Stelle mit dem TODO)
 TODO: Bilder für Hindernisse erstellen und Hindernisse anzeigen 
-      //Einige Hindernisse sind erstellt doch noch nicht angezeigt
+      //Einige Hindernisse sind erstellt doch noch nicht angezeigt -> WO SIND DIE??
 TODO: Die Kamera bewegen, wenn sich die Figur bewegt
 
 
