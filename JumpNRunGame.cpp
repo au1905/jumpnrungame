@@ -11,6 +11,7 @@
 #include "Imageloader.h"
 #include "Figur.h"
 #include "Hintergrund.h"
+#include "HindernisStufe.h"
 
 
 using namespace std;
@@ -23,6 +24,7 @@ void tasteLos(unsigned char key, int, int);
 int zeit = 0;
 Figur* figur;
 Hintergrund* hintergrund;
+Hindernis_Stufe* einfachesHindernis;
 
 std::map<std::string, GLuint> Texturen;
 
@@ -64,6 +66,8 @@ int main(int argc, char*argv[]) {
 	ladeTextur("src/figur.bmp");
 	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.bmp"]);
 
+	ladeTextur("src/Hindernins_einfach.bmp");
+	einfachesHindernis = new Hindernis_Stufe(0.5,0,3,Texturen["src/Hindernins_einfach.bmp"]);
 
 	glutMainLoop(); //Hauptschleife
 

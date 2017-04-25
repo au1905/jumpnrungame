@@ -14,7 +14,7 @@
 #include <string>
 #include "Hindernisse.h"
 
-Hindernisse::Hindernisse(double x, double y,
+Hindernisse::Hindernisse(double x, double y, double size,
 		GLuint texturNr) :
 		Object(x, y, 0.3, 0.4, texturNr) {
 

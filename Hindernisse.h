@@ -13,7 +13,7 @@
 
 class Hindernisse: public Object  {
 public:
-	Hindernisse(double x, double y, GLuint texturNr);
+	Hindernisse(double x, double y, double size, GLuint texturNr);
 	virtual ~Hindernisse();
 
 private:
