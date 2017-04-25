@@ -62,7 +62,7 @@ int main(int argc, char*argv[]) {
 	hintergrund = new Hintergrund(-1, -1, Texturen["src/Hintergrund.bmp"]);
 
 	ladeTextur("src/figur.bmp");
-	figur = new Figur(-0.5, -0.9, Texturen["src/figur.bmp"]);
+	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.bmp"]);
 
 
 	glutMainLoop(); //Hauptschleife

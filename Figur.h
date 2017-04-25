@@ -12,7 +12,7 @@
 
 class Figur: public Object {
 public:
-	Figur(double x, double y, GLuint texturNr);
+	Figur(double x, double y, double size, GLuint texturNr);
 	virtual ~Figur();
 
 	void move(int time);
