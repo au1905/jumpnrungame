@@ -7,14 +7,61 @@
 #include <string>
 #include "Figur.h"
 
-
-
-Figur::Figur(double x, double y,
-		GLuint texturNr) :
+Figur::Figur(double x, double y, GLuint texturNr) :
 		Object(x, y, 0.3, 0.4, texturNr) {
 
 }
 
 Figur::~Figur() {
+
+}
+
+void Figur::move(int time) {
+	dy -= 0.0005;
+
+	_y += ((dy * time) / 5);
+	if (_y < -0.9) {
+		dy = -dy;
+		dy /= 1.5;
+		_y += ((dy * time) / 5);
+	}
+
+	//Die Figur springen lassen.
+	if (_y < -0.89 && tasteHochGedrueckt) {
+		dy = 0.01;
+	}
+
+//	_x += ((dx * time) / 5);
+	if (tasteRechtsGedrueckt) {
+		_x += time / 400.0;
+	}
+	_y += ((dy * time) / 5);
+}
+
+void Figur::tasteDruck(unsigned char key) {
+	switch (key) {
+	case 'w':
+		tasteHochGedrueckt = true;
+		break;
+	case 'd':
+		tasteRechtsGedrueckt=true;
+		break;
+	default:
+		break;
+	}
+}
+
+void Figur::tasteLos(unsigned char key) {
+
+	switch (key) {
+	case 'w':
+		tasteHochGedrueckt = false;
+		break;
+	case 'd':
+		tasteRechtsGedrueckt=false;
+		break;
+	default:
+		break;
+	}
 
 }

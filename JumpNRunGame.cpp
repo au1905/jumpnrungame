@@ -62,7 +62,7 @@ int main(int argc, char*argv[]) {
 	hintergrund = new Hintergrund(-1, -1, Texturen["src/Hintergrund.bmp"]);
 
 	ladeTextur("src/figur.bmp");
-	figur = new Figur(0, 0, Texturen["src/figur.bmp"]);
+	figur = new Figur(-0.5, -0.9, Texturen["src/figur.bmp"]);
 
 
 	glutMainLoop(); //Hauptschleife
@@ -72,12 +72,22 @@ int main(int argc, char*argv[]) {
 
 
 void tasteDruck(unsigned char key, int, int) {
-	/*if (key == 'd') {
-			TasteD = true;
-		}*/
+
+	switch (key) {
+	case 'q':
+		exit(0);
+	default:
+		figur->tasteDruck(key);
+		break;
+	}
 }
 void tasteLos(unsigned char key, int, int) {
-	//TODO tasteLos
+	switch (key) {
+	//eigene TasteLos-Ereignisse
+	default:
+		figur->tasteLos(key);
+		break;
+	}
 }
 
 void display() {
@@ -97,7 +107,8 @@ void timerEvent() {
 	int zeitdiff = zeitneu - zeit;
 	if (zeitdiff > 16) {
 
-		//TODO TimerEvent ("echter" Code)
+		//TODO TimerEvent ("echter" Code, der 60 Mal pro Sekunde ausgeführt wird)
+		figur->move(zeitdiff);
 
 		zeit = zeitneu;
 		glutPostRedisplay();

@@ -15,8 +15,16 @@ public:
 	Figur(double x, double y, GLuint texturNr);
 	virtual ~Figur();
 
-private:
+	void move(int time);
+	void tasteDruck(unsigned char key);
+	void tasteLos(unsigned char key);
 
+private:
+	double dx=0.0;
+	double dy=0.0;
+
+	bool tasteHochGedrueckt=false;
+	bool tasteRechtsGedrueckt=false;
 };
 
 #endif /* Figur_H_ */
