@@ -83,20 +83,20 @@ void Object::Display() const {
 	glPopMatrix();
 }
 
-void Object::Down(int time) {
-	_y -= time * 0.02;
+void Object::Down(int distance) {
+	_y -= time;
 }
 
-void Object::Up(int time) {
-	_y += time * 0.02;
+void Object::Up(int distance) {
+	_y += time;
 }
 
-void Object::Right(int time) {
-	_x += time * 0.02;
+void Object::Right(int distance) {
+	_x += time;
 }
 
-void Object::Left(int time) {
-	_x -= time * 0.02;
+void Object::Left(int distance) {
+	_x -= time;
 }
 
 void Object::RotateRight(int time) {
