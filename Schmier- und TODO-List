@@ -29,4 +29,5 @@ Projekt speichern
 git diff (Zeigt eure Änderungen an)
 git add die Dateien, die ihr geändert habt (und von denen ihr die Änderungen pushen wollt)
 git commit -m "Hier muss eine aussagekräftige Beschreibung eurer Änderungen hin, schaut bei Bedarf noch einmal bei der Ausgabe von git diff nach"
+git pull
 git push
