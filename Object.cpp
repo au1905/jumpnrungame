@@ -84,19 +84,19 @@ void Object::Display() const {
 }
 
 void Object::Down(int distance) {
-	_y -= time;
+	_y -= distance;
 }
 
 void Object::Up(int distance) {
-	_y += time;
+	_y += distance;
 }
 
 void Object::Right(int distance) {
-	_x += time;
+	_x += distance;
 }
 
 void Object::Left(int distance) {
-	_x -= time;
+	_x -= distance;
 }
 
 void Object::RotateRight(int time) {
