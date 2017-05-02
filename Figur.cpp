@@ -7,6 +7,7 @@
 #include <string>
 #include "Figur.h"
 
+
 Figur::Figur(double x, double y, double size, GLuint texturNr) :
 		Object(x, y, 0.3*size, 0.4*size, texturNr) {
 
@@ -35,7 +36,19 @@ void Figur::move(int time) {
 	if (tasteRechtsGedrueckt) {
 		_x += time / 400.0;
 	}
+	if (tasteLinksGedrueckt) {
+		_x -= time / 400.0;
+	}
+
 	_y += ((dy * time) / 5);
+
+
+	if (kameraposx +_x > 0.5){
+		kameraposx -= kameraposx +_x - 0.5;
+	}
+	if (kameraposx +_x < -0.5){
+		kameraposx -= kameraposx +_x + 0.5;
+	}
 }
 
 void Figur::tasteDruck(unsigned char key) {
@@ -46,6 +59,9 @@ void Figur::tasteDruck(unsigned char key) {
 	case 'd':
 		tasteRechtsGedrueckt=true;
 		break;
+	case 'a':
+		tasteLinksGedrueckt=true;
+		break;
 	default:
 		break;
 	}
@@ -55,10 +71,13 @@ void Figur::tasteLos(unsigned char key) {
 
 	switch (key) {
 	case 'w':
-		tasteHochGedrueckt = false;
+		tasteHochGedrueckt=false;
 		break;
 	case 'd':
 		tasteRechtsGedrueckt=false;
+		break;
+	case 'a':
+		tasteLinksGedrueckt=false;
 		break;
 	default:
 		break;

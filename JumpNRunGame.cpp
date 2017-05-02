@@ -26,6 +26,7 @@ Figur* figur;
 Hintergrund* hintergrund;
 Hindernis_Stufe* einfachesHindernis;
 
+
 std::map<std::string, GLuint> Texturen;
 
 
@@ -82,8 +83,11 @@ void display() {
 
 	//TODO display()
 	hintergrund->Display();
-	figur->Display();
 
+	glPushMatrix();
+	glTranslatef(figur->kameraposx, figur->kameraposy, 0);
+	figur->Display();
+	glPopMatrix();
 
 	glFlush();
 }
