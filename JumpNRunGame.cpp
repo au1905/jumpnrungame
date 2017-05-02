@@ -8,10 +8,10 @@
 #include<GL/glut.h>
 #include <iostream>
 #include <map>
-#include "Imageloader.h"
 #include "Figur.h"
 #include "Hintergrund.h"
 #include "HindernisStufe.h"
+#include "LadeTexturPNG.h"
 
 
 using namespace std;
@@ -28,24 +28,6 @@ Hindernis_Stufe* einfachesHindernis;
 
 std::map<std::string, GLuint> Texturen;
 
-void ladeTextur(std::string filename) {
-	// Lade das Bild in das Objekt image
-	Image* myImage = loadBMP(filename.c_str());
-	GLuint textureNr = 0;
-	// Lege das Bild als Textur an.
-	glEnable(GL_TEXTURE_2D);
-	glGenTextures(1, &textureNr);
-	glBindTexture(GL_TEXTURE_2D, textureNr);
-	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, myImage->width, myImage->height, 0,
-	GL_RGB, GL_UNSIGNED_BYTE, myImage->pixels);
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); //GL_NEAREST);//
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	Texturen[filename] = textureNr;
-	std::cout << "Bild '" << filename << "' geladen, ist jetzt Textur Nr. "
-			<< Texturen[filename] << std::endl;
-}
 
 int main(int argc, char*argv[]) {
 	glutInit(&argc, argv); //Generiere das OpenGL-Fenster
@@ -60,14 +42,14 @@ int main(int argc, char*argv[]) {
 
 	glutIdleFunc(timerEvent); //Animationen
 
-	ladeTextur("src/Hintergrund.bmp");
-	hintergrund = new Hintergrund(-1, -1, Texturen["src/Hintergrund.bmp"]);
+	Texturen["src/Hintergrund.png"] = LadeTexturPNG("src/Hintergrund.png");
+	hintergrund = new Hintergrund(-1, -1, Texturen["src/Hintergrund.png"]);
 
-	ladeTextur("src/figur.bmp");
-	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.bmp"]);
+	Texturen["src/figur.png"] = LadeTexturPNG("src/figur.png");
+	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.png"]);
 
-	ladeTextur("src/Hindernis_einfach.bmp");
-	einfachesHindernis = new Hindernis_Stufe(0.5,0,3,Texturen["src/Hindernins_einfach.bmp"]);
+	Texturen["src/Hindernins_einfach.png"] = LadeTexturPNG("src/Hindernis_einfach.png");
+	einfachesHindernis = new Hindernis_Stufe(0.5,0,3,Texturen["src/Hindernins_einfach.png"]);
 
 	glutMainLoop(); //Hauptschleife
 
