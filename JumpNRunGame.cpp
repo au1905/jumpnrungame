@@ -12,7 +12,7 @@
 #include "Hintergrund.h"
 #include "HindernisStufe.h"
 #include "LadeTexturPNG.h"
-
+#include "HindernisTreppe.h"
 
 using namespace std;
 
@@ -25,6 +25,7 @@ int zeit = 0;
 Figur* figur;
 Hintergrund* hintergrund;
 Hindernis_Stufe* einfachesHindernis;
+Hindernisse* treppenHindernis;
 
 
 std::map<std::string, GLuint> Texturen;
@@ -50,7 +51,10 @@ int main(int argc, char*argv[]) {
 	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.png"]);
 
 	Texturen["src/Hindernins_einfach.png"] = LadeTexturPNG("src/Hindernis_einfach.png");
-	einfachesHindernis = new Hindernis_Stufe(0.5,-0.9,3,Texturen["src/Hindernins_einfach.png"]);
+	einfachesHindernis = new Hindernis_Stufe(0.5,-0.9,1,Texturen["src/Hindernins_einfach.png"]);
+
+	Texturen["src/Treppe.png"] = LadeTexturPNG("src/Treppe.png");
+	treppenHindernis = new HindernisTreppe(2,-0.9,1,Texturen["src/Treppe.png"]);
 
 
 	glutMainLoop(); //Hauptschleife
@@ -89,6 +93,7 @@ void display() {
 	glTranslatef(figur->kameraposx, figur->kameraposy, 0);
 	figur->Display();
 	einfachesHindernis->Display();
+	treppenHindernis->Display();
 	glPopMatrix();
 
 	glFlush();
