@@ -15,6 +15,8 @@ class Hindernis_Stufe: public Hindernisse {
 public:
 	Hindernis_Stufe(double x, double y, double size, GLuint texturNr);
 	virtual ~Hindernis_Stufe();
+
+	void collision(double px, double py);
 };
 
 

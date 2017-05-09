@@ -57,8 +57,6 @@ int main(int argc, char*argv[]) {
 
 }
 
-
-
 void tasteDruck(unsigned char key, int, int) {
 
 	switch (key) {
