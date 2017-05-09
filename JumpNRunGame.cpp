@@ -50,7 +50,8 @@ int main(int argc, char*argv[]) {
 	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.png"]);
 
 	Texturen["src/Hindernins_einfach.png"] = LadeTexturPNG("src/Hindernis_einfach.png");
-	einfachesHindernis = new Hindernis_Stufe(0.5,0,3,Texturen["src/Hindernins_einfach.png"]);
+	einfachesHindernis = new Hindernis_Stufe(0.5,-0.9,3,Texturen["src/Hindernins_einfach.png"]);
+
 
 	glutMainLoop(); //Hauptschleife
 
@@ -87,6 +88,7 @@ void display() {
 	glPushMatrix();
 	glTranslatef(figur->kameraposx, figur->kameraposy, 0);
 	figur->Display();
+	einfachesHindernis->Display();
 	glPopMatrix();
 
 	glFlush();
