@@ -19,12 +19,16 @@ public:
 	void tasteDruck(unsigned char key);
 	void tasteLos(unsigned char key);
 
+
+	float kameraposx=0;
+	float kameraposy=0;
 private:
 	double dx=0.0;
 	double dy=0.0;
 
 	bool tasteHochGedrueckt=false;
 	bool tasteRechtsGedrueckt=false;
+	bool tasteLinksGedrueckt=false;
 };
 
 #endif /* Figur_H_ */
