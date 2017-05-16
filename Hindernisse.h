@@ -11,14 +11,14 @@
 #include "Object.h"
 #include<GL/glut.h>
 
-class Hindernisse: public Object  {
+class Hindernisse: public Object {
 public:
 	Hindernisse(double x, double y, double size, GLuint texturNr);
+	Hindernisse(double x, double y, double sizeX, double sizeY, GLuint texturNr);
 	virtual ~Hindernisse();
 
 private:
 };
 
 #endif /* HINDERNISSE_H_ */
-
 
