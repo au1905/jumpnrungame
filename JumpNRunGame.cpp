@@ -82,19 +82,27 @@ void tasteLos(unsigned char key, int, int) {
 
 void display() {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	//TODO display()
 	hintergrund->Display();
 
 	glPushMatrix();
 	glTranslatef(figur->kameraposx, figur->kameraposy, 0);
+
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	figur->Display();
 	einfachesHindernis->Display();
 	treppenHindernis->Display();
+	glDisable(GL_BLEND);
+
 	glPopMatrix();
 
 	glFlush();
+
+
 }
 
 void timerEvent() {
