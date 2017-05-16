@@ -49,6 +49,8 @@ void Figur::move(int time) {
 	if (kameraposx +_x < -0.5){
 		kameraposx -= kameraposx +_x + 0.5;
 	}
+
+
 }
 
 void Figur::tasteDruck(unsigned char key) {
