@@ -19,6 +19,7 @@ public:
 	void tasteDruck(unsigned char key);
 	void tasteLos(unsigned char key);
 
+	double getx();
 
 	float kameraposx=0;
 	float kameraposy=0;

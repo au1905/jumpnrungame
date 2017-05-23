@@ -5,7 +5,7 @@
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style
 //============================================================================
-#include<GL/glut.h>
+#include <GL/glut.h>
 #include <iostream>
 #include <map>
 #include "Figur.h"
@@ -20,18 +20,22 @@ void display();
 void timerEvent();
 void tasteDruck(unsigned char key, int, int);
 void tasteLos(unsigned char key, int, int);
+void seedrand();
+void newHindernis();
 
 int zeit = 0;
 Figur* figur;
 Hintergrund* hintergrund;
 Hindernis_Stufe* einfachesHindernis;
 Hindernisse* treppenHindernis;
-
+std::vector<Hindernisse*> hindernisse;
 
 std::map<std::string, GLuint> Texturen;
 
 
 int main(int argc, char*argv[]) {
+	seedrand(); //Initialisiere die Random-Funktion
+
 	glutInit(&argc, argv); //Generiere das OpenGL-Fenster
 	glutInitWindowSize(800, 600);
 	glutCreateWindow("JumpNRunGame");
@@ -51,10 +55,7 @@ int main(int argc, char*argv[]) {
 	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.png"]);
 
 	Texturen["src/Hindernins_einfach.png"] = LadeTexturPNG("src/Hindernis_einfach.png");
-	einfachesHindernis = new Hindernis_Stufe(0.5,-0.9,1,Texturen["src/Hindernins_einfach.png"]);
-
 	Texturen["src/Treppe.png"] = LadeTexturPNG("src/Treppe.png");
-	treppenHindernis = new HindernisTreppe(2,-0.9,1,Texturen["src/Treppe.png"]);
 
 
 	glutMainLoop(); //Hauptschleife
@@ -94,8 +95,8 @@ void display() {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	figur->Display();
-	einfachesHindernis->Display();
-	treppenHindernis->Display();
+	for (uint i = 0; i < hindernisse.size(); i++)
+		hindernisse[i]->Display();
 	glDisable(GL_BLEND);
 
 	glPopMatrix();
@@ -112,8 +113,41 @@ void timerEvent() {
 
 		//TODO TimerEvent ("echter" Code, der 60 Mal pro Sekunde ausgeführt wird)
 		figur->move(zeitdiff);
+		newHindernis();
 
 		zeit = zeitneu;
 		glutPostRedisplay();
+	}
+}
+
+void seedrand() {
+	time_t t;
+	time(&t);
+	srand((unsigned int) (t));
+}
+
+void newHindernis() {
+	//static bedeutet, dass die Variable am Anfang des Programms einmal initialisiert wird
+	//und dann ihren Wert "behält"
+	static double letztesHindernis = 0;
+
+	double x = figur->getx();
+
+	//wenn das letzte Hindernis mehr als 1 zurückliegt
+	if (x - letztesHindernis > 1) {
+		switch (rand() % 2) {
+		case 0:
+			hindernisse.push_back(
+					einfachesHindernis = new Hindernis_Stufe(x+1, -0.9, 1,
+							Texturen["src/Hindernins_einfach.png"]));
+			break;
+		case 1:
+			hindernisse.push_back(
+					treppenHindernis = new HindernisTreppe(x+1, -0.9, 1,
+							Texturen["src/Treppe.png"]));
+			break;
+		}
+
+		letztesHindernis = x;
 	}
 }
