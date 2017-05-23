@@ -13,6 +13,8 @@
 #include "HindernisStufe.h"
 #include "LadeTexturPNG.h"
 #include "HindernisTreppe.h"
+#include "Rechteckklein.h"
+#include "StehendesRechteck.h"
 
 using namespace std;
 
@@ -26,6 +28,8 @@ Figur* figur;
 Hintergrund* hintergrund;
 Hindernis_Stufe* einfachesHindernis;
 Hindernisse* treppenHindernis;
+Rechteckklein* kleinesHindernis;
+StehendesRechteck* stehendesHindernis;
 
 
 std::map<std::string, GLuint> Texturen;
@@ -55,6 +59,12 @@ int main(int argc, char*argv[]) {
 
 	Texturen["src/Treppe.png"] = LadeTexturPNG("src/Treppe.png");
 	treppenHindernis = new HindernisTreppe(2,-0.9,1,Texturen["src/Treppe.png"]);
+
+	Texturen["src/Rechteckklein.png"] = LadeTexturPNG("src/Rechteckklein.png");
+	kleinesHindernis = new Rechteckklein (5,-0.9,1,Texturen["src/Rechteckklein.png"]);
+
+	Texturen["src/StehendesRechteck.png"] = LadeTexturPNG("src/StehendesRechteck.png");
+	stehendesHindernis = new StehendesRechteck (7,-0.9,1,Texturen["src/StehendesRechteck.png"]);
 
 
 	glutMainLoop(); //Hauptschleife
@@ -96,6 +106,8 @@ void display() {
 	figur->Display();
 	einfachesHindernis->Display();
 	treppenHindernis->Display();
+	kleinesHindernis->Display();
+	stehendesHindernis->Display();
 	glDisable(GL_BLEND);
 
 	glPopMatrix();
