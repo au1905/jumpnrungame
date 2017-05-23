@@ -4,13 +4,14 @@
 
 
 FERTIG: Die Figur und den Hintergrund anzeigen
-TODO: Das Bild "figur.bmp" muss zugeschnitten und die Ecken müssen trasparent werden (bisher wird ein schwarzes Quadrat um die Figur gezeichnet)
+FERTIG: Das Bild "figur.bmp" muss zugeschnitten und die Ecken müssen trasparent werden (bisher wird ein schwarzes Quadrat um die Figur gezeichnet)
       //Wir können Bilder vorerst nur eckig abspeichern, sagte Herr Nopper
 FERTIG: Auf Tastatureingaben reagieren
 FERTIG: Die Figur in TimerEvent() bewegen (an der Stelle mit dem TODO)
+FERTIG: Die Kamera bewegen, wenn sich die Figur bewegt
 ANGEFANGEN: Bilder für Hindernisse erstellen und Hindernisse anzeigen 
-      //Einige Hindernisse sind erstellt doch noch nicht angezeigt -> WO SIND DIE??
-ANGEFANGEN: Die Kamera bewegen, wenn sich die Figur bewegt
+      //Einige Hindernisse sind erstellt doch noch nicht angezeigt
+ANGEFANGEN: Kollisionsabfragen
 TODO: Die Kamera auch bewegen, wenn die Figur sich nach oben (und unten) bewegt
       Dabei muss der Boden auch nach unten bewegt werden, die Wolke in der Ecke aber wenn möglich bleiben
       Da der gesamte Hintergrund bisher nicht bewegt wird, würde der Boden an der gleichen Stelle bleiben, 
