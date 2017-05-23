@@ -16,6 +16,8 @@ TODO: Die Kamera auch bewegen, wenn die Figur sich nach oben (und unten) bewegt
       Dabei muss der Boden auch nach unten bewegt werden, die Wolke in der Ecke aber wenn möglich bleiben
       Da der gesamte Hintergrund bisher nicht bewegt wird, würde der Boden an der gleichen Stelle bleiben, 
       wenn die Figur und die Kamera sich nach oben bewegen
+TODO: Score zählen und Scorezähler anzeigen
+TODO: 3D-Elemente einbauen
 ANGEFANGEN: Die Hindernisse zufällig erscheinen lassen
 
 Ich habe das Ganze so weit fertig, dass die Figur und der Hintergrund angezeigt werden. 
