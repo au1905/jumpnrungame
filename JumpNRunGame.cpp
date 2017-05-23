@@ -13,6 +13,8 @@
 #include "HindernisStufe.h"
 #include "LadeTexturPNG.h"
 #include "HindernisTreppe.h"
+#include "Rechteckklein.h"
+#include "StehendesRechteck.h"
 
 using namespace std;
 
@@ -28,6 +30,9 @@ Figur* figur;
 Hintergrund* hintergrund;
 Hindernis_Stufe* einfachesHindernis;
 Hindernisse* treppenHindernis;
+Rechteckklein* kleinesHindernis;
+StehendesRechteck* stehendesHindernis;
+
 std::vector<Hindernisse*> hindernisse;
 
 std::map<std::string, GLuint> Texturen;
@@ -56,6 +61,8 @@ int main(int argc, char*argv[]) {
 
 	Texturen["src/Hindernins_einfach.png"] = LadeTexturPNG("src/Hindernis_einfach.png");
 	Texturen["src/Treppe.png"] = LadeTexturPNG("src/Treppe.png");
+	Texturen["src/Rechteckklein.png"] = LadeTexturPNG("src/Rechteckklein.png");
+	Texturen["src/StehendesRechteck.png"] = LadeTexturPNG("src/StehendesRechteck.png");
 
 
 	glutMainLoop(); //Hauptschleife
@@ -95,8 +102,10 @@ void display() {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	figur->Display();
+
 	for (uint i = 0; i < hindernisse.size(); i++)
 		hindernisse[i]->Display();
+
 	glDisable(GL_BLEND);
 
 	glPopMatrix();
@@ -135,19 +144,29 @@ void newHindernis() {
 
 	//wenn das letzte Hindernis mehr als 1 zurückliegt
 	if (x - letztesHindernis > 1) {
-		switch (rand() % 2) {
+		switch (rand() % 4) {
 		case 0:
 			hindernisse.push_back(
-					einfachesHindernis = new Hindernis_Stufe(x+1, -0.9, 1,
+					new Hindernis_Stufe(x + 1, -0.9, 1,
 							Texturen["src/Hindernins_einfach.png"]));
 			break;
 		case 1:
 			hindernisse.push_back(
-					treppenHindernis = new HindernisTreppe(x+1, -0.9, 1,
+					new HindernisTreppe(x + 1, -0.9, 1,
 							Texturen["src/Treppe.png"]));
 			break;
-		}
 
+		case 2:
+			hindernisse.push_back(
+					new Rechteckklein(5, -0.9, 1,
+							Texturen["src/Rechteckklein.png"]));
+			break;
+		case 3:
+			hindernisse.push_back(
+					new StehendesRechteck(7, -0.9, 1,
+							Texturen["src/StehendesRechteck.png"]));
+			break;
+		}
 		letztesHindernis = x;
 	}
 }

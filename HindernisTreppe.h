@@ -14,6 +14,7 @@ class HindernisTreppe: public Hindernisse {
 public:
 	HindernisTreppe(double x, double y, double size, GLuint texturNr);
 	virtual ~HindernisTreppe();
+
 };
 
 #endif /* SRC_HINDERNISTREPPE_H_ */
