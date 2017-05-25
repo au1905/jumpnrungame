@@ -138,12 +138,11 @@ void seedrand() {
 void newHindernis() {
 	//static bedeutet, dass die Variable am Anfang des Programms einmal initialisiert wird
 	//und dann ihren Wert "behält"
-	static double letztesHindernis = 0;
+	static double naechstesHindernis = 0;
 
 	double x = figur->getx();
 
-	//wenn das letzte Hindernis mehr als 1 zurückliegt
-	if (x - letztesHindernis > 1) {
+	if (x > naechstesHindernis) {
 		switch (rand() % 4) {
 		case 0:
 			hindernisse.push_back(
@@ -157,18 +156,19 @@ void newHindernis() {
 			break;
 
 		case 2:
-			cout<<"rechteckklein"<<endl;
 			hindernisse.push_back(
 					new Rechteckklein(x+1, -0.9, 1,
 							Texturen["src/Rechteckklein.png"]));
 			break;
 		case 3:
-			cout<<"stehendesrechteck"<<endl;
 			hindernisse.push_back(
 					new StehendesRechteck(x+1, -0.9, 1,
 							Texturen["src/StehendesRechteck.png"]));
 			break;
 		}
-		letztesHindernis = x;
+
+		//Das naechste Hindernis ist mindestens 1.5 entfernt;
+		//dazu wird noch eine zufaellige Zahl von 0 bis 1 addiert
+		naechstesHindernis = x + 1.5 + (rand()%100)/100;
 	}
 }
