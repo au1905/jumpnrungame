@@ -157,13 +157,15 @@ void newHindernis() {
 			break;
 
 		case 2:
+			cout<<"rechteckklein"<<endl;
 			hindernisse.push_back(
-					new Rechteckklein(5, -0.9, 1,
+					new Rechteckklein(x+1, -0.9, 1,
 							Texturen["src/Rechteckklein.png"]));
 			break;
 		case 3:
+			cout<<"stehendesrechteck"<<endl;
 			hindernisse.push_back(
-					new StehendesRechteck(7, -0.9, 1,
+					new StehendesRechteck(x+1, -0.9, 1,
 							Texturen["src/StehendesRechteck.png"]));
 			break;
 		}
