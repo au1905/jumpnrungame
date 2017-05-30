@@ -9,7 +9,7 @@ FERTIG: Das Bild "figur.bmp" muss zugeschnitten und die Ecken müssen trasparent
 FERTIG: Auf Tastatureingaben reagieren
 FERTIG: Die Figur in TimerEvent() bewegen (an der Stelle mit dem TODO)
 FERTIG: Die Kamera bewegen, wenn sich die Figur bewegt
-Fertig: Bilder für Hindernisse erstellen und Hindernisse anzeigen 
+FERTIG: Bilder für Hindernisse erstellen und Hindernisse anzeigen 
       
 ANGEFANGEN: Kollisionsabfragen
 TODO: Die Kamera auch bewegen, wenn die Figur sich nach oben (und unten) bewegt
@@ -17,8 +17,8 @@ TODO: Die Kamera auch bewegen, wenn die Figur sich nach oben (und unten) bewegt
       Da der gesamte Hintergrund bisher nicht bewegt wird, würde der Boden an der gleichen Stelle bleiben, 
       wenn die Figur und die Kamera sich nach oben bewegen
 TODO: Score zählen und Scorezähler anzeigen
-TODO: 3D-Elemente einbauen
-ANGEFANGEN: Die Hindernisse zufällig erscheinen lassen
+TODO: 3D-Elemente einbaue
+FERTIG: Die Hindernisse zufällig erscheinen lassen
 
 Ich habe das Ganze so weit fertig, dass die Figur und der Hintergrund angezeigt werden. 
 Für neue Objekte:
