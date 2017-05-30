@@ -86,3 +86,7 @@ void Figur::tasteLos(unsigned char key) {
 	}
 
 }
+
+double Figur::getx(){
+	return _x;
+}

@@ -9,16 +9,18 @@
 #define HINDERNISSE_H_
 
 #include "Object.h"
-#include<GL/glut.h>
+#include <GL/glut.h>
 
-class Hindernisse: public Object  {
+class Hindernisse: public Object {
 public:
 	Hindernisse(double x, double y, double size, GLuint texturNr);
+	Hindernisse(double x, double y, double sizeX, double sizeY, GLuint texturNr);
 	virtual ~Hindernisse();
 
+
 private:
+	static uint ladeTextur();
 };
 
 #endif /* HINDERNISSE_H_ */
-
 
