@@ -103,8 +103,10 @@ void display() {
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	figur->Display();
 
-	for (uint i = 0; i < hindernisse.size(); i++)
-		hindernisse[i]->Display();
+	for (uint i = hindernisse.size(); i > 0; i--){
+		cout<<"zeichne Hindernis "<<i<<endl;
+		hindernisse[i-1]->Display();
+	}
 
 	glDisable(GL_BLEND);
 
