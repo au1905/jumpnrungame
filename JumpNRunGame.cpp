@@ -75,7 +75,6 @@ void tasteLos(unsigned char key, int, int) {
 		break;
 	}
 }
-
 void display() {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);

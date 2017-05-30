@@ -25,6 +25,8 @@ public:
 	void Right(int);
 	void Left(int);
 	void RotateRight(int);
+	double getx();
+	double gety();
 
 protected:
 	double _x;

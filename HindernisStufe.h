@@ -9,6 +9,7 @@
 #define SRC_HINDERNISSTUFE_H_
 
 #include "Hindernisse.h"
+#include "Figur.h"
 
 
 class Hindernis_Stufe: public Hindernisse {

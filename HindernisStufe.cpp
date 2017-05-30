@@ -20,12 +20,13 @@ Hindernis_Stufe::~Hindernis_Stufe() {
 
 void Hindernis_Stufe::collision(double px, double py) {
 	//px = X-Position der Figur    py = Y-Position der Figur
-
+	//double posx = Figur->getx;
+	//double posy = Figur->gety;
 	if(py <= _y){  	//Wenn Figur nicht springt; _y höchster Punkt des Hindernisses
-		double pxr = px+0.6; //rechte obere Ecke
+		double pxr = px+0.6; //rechte obere Ecke Figur
 		double dl = _x - pxr; //Abstand links Figur - Rechteck
 		if (dl==0){
-			//abprallen in -x Richtung
+			//figur->tasteLos(d);
 		}
 
 		double dr = (_x ) - px;
@@ -33,6 +34,4 @@ void Hindernis_Stufe::collision(double px, double py) {
 			//abprallen in x-Richtung
 		}
 	}
-
-
 }
