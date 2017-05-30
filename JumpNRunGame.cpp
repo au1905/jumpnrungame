@@ -29,12 +29,10 @@ void newHindernis();
 int zeit = 0;
 Figur* figur;
 Hintergrund* hintergrund;
+
 Boden* boden;
 
-Hindernis_Stufe* einfachesHindernis;
-Hindernisse* treppenHindernis;
-Rechteckklein* kleinesHindernis;
-StehendesRechteck* stehendesHindernis;
+
 
 
 
@@ -95,7 +93,6 @@ void tasteLos(unsigned char key, int, int) {
 		break;
 	}
 }
-
 void display() {
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

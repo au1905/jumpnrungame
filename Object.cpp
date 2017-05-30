@@ -102,6 +102,12 @@ void Object::Left(int distance) {
 void Object::RotateRight(int time) {
 	_rotation += time * 0.2;
 }
+double Object::getx() {
+	return _x;
+}
+double Object::gety() {
+	return _y;
+}
 
 void Object::push(std::vector<GLfloat>& vec, GLfloat x, GLfloat y) {
 	vec.push_back(x);
