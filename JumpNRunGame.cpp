@@ -103,7 +103,6 @@ void display() {
 	figur->Display();
 
 	for (uint i = hindernisse.size(); i > 0; i--){
-		cout<<"zeichne Hindernis "<<i<<endl;
 		hindernisse[i-1]->Display();
 	}
 
