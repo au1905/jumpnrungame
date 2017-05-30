@@ -28,10 +28,6 @@ void newHindernis();
 int zeit = 0;
 Figur* figur;
 Hintergrund* hintergrund;
-Hindernis_Stufe* einfachesHindernis;
-Hindernisse* treppenHindernis;
-Rechteckklein* kleinesHindernis;
-StehendesRechteck* stehendesHindernis;
 
 std::vector<Hindernisse*> hindernisse;
 
