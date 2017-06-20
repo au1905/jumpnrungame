@@ -10,14 +10,21 @@
 
 #include "Object.h"
 #include <GL/glut.h>
+#include "Figur.h"
 
 class Hindernisse: public Object {
 public:
 	Hindernisse(double x, double y, double size, GLuint texturNr);
-	Hindernisse(double x, double y, double sizeX, double sizeY, GLuint texturNr);
+	Hindernisse(double x, double y, double sizeX, double sizeY,
+			GLuint texturNr);
 	virtual ~Hindernisse();
 
-
+	enum Kollision {
+		KEINE_KOLLISION = 0, VON_LINKS, VON_RECHTS, VON_OBEN, VON_UNTEN
+	};
+	virtual void collision(Figur* figur);
+	Kollision collisionQuader(Figur* figur, double linkesX, double unteresY,
+			double breite, double hoehe);
 private:
 	static uint ladeTextur();
 };

@@ -9,9 +9,8 @@
 #include "Object.h"
 
 Object::Object(double x, double y, double sizeX, double sizeY, GLuint textureNr) :
-		_x(x), _y(y), _textureNr(textureNr) {
+		_x(x), _y(y), _breite(sizeX), _hoehe(sizeY), _textureNr(textureNr) {
 
-	_displaylistNr = glGenLists(1);
 	_rotation = 0;
 
 	_displaylistNr = glGenLists(1);
@@ -134,5 +133,10 @@ void Object::push(std::vector<GLuint>& vec, GLint a, GLint b, GLint c,
 	vec.push_back(d);
 }
 
+double Object::getBreite() const {
+	return _breite;
+}
 
-
+double Object::getHoehe() const {
+	return _hoehe;
+}

@@ -27,10 +27,14 @@ public:
 	void RotateRight(int);
 	double getx();
 	double gety();
+	double getBreite() const;
+	double getHoehe() const;
 
 protected:
 	double _x;
 	double _y;
+	double _breite;
+	double _hoehe;
 	double _rotation;
 
 

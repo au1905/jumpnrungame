@@ -17,7 +17,9 @@ public:
 	Hindernis_Stufe(double x, double y, double size, GLuint texturNr);
 	virtual ~Hindernis_Stufe();
 
-	void collision(Figur* figur);
+	void display();
+
+	static std::vector<Hindernis_Stufe*> hindernisseStufe;
 };
 
 

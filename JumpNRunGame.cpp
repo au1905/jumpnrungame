@@ -15,6 +15,7 @@
 #include "HindernisTreppe.h"
 #include "Rechteckklein.h"
 #include "StehendesRechteck.h"
+#include "HindernisStufe.h"
 
 using namespace std;
 
@@ -119,7 +120,9 @@ void timerEvent() {
 		//TODO TimerEvent ("echter" Code, der 60 Mal pro Sekunde ausgeführt wird)
 		figur->move(zeitdiff);
 		newHindernis();
-
+		for (uint i = hindernisse.size(); i > 0; i--){
+			hindernisse[i-1]->collision(figur);
+		}
 		zeit = zeitneu;
 		glutPostRedisplay();
 	}
@@ -141,9 +144,8 @@ void newHindernis() {
 	if (x > naechstesHindernis) {
 		switch (rand() % 4) {
 		case 0:
-			hindernisse.push_back(
-					new Hindernis_Stufe(x + 1, -0.9, 1,
-							Texturen["src/Hindernins_einfach.png"]));
+			hindernisse.push_back(new Hindernis_Stufe(x + 1, -0.9, 1,
+					Texturen["src/Hindernins_einfach.png"]));
 			break;
 		case 1:
 			hindernisse.push_back(
