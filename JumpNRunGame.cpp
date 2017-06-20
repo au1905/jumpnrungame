@@ -16,6 +16,7 @@
 #include "Rechteckklein.h"
 #include "StehendesRechteck.h"
 #include "HindernisStufe.h"
+#include "Boden.h"
 
 using namespace std;
 
@@ -29,6 +30,12 @@ void newHindernis();
 int zeit = 0;
 Figur* figur;
 Hintergrund* hintergrund;
+
+Boden* boden;
+
+
+
+
 
 std::vector<Hindernisse*> hindernisse;
 
@@ -52,6 +59,8 @@ int main(int argc, char*argv[]) {
 
 	Texturen["src/Hintergrund.png"] = LadeTexturPNG("src/Hintergrund.png");
 	hintergrund = new Hintergrund(-1, -1, Texturen["src/Hintergrund.png"]);
+	Texturen["src/Boden.png"] = LadeTexturPNG("src/Boden.png");
+	boden= new Boden(-1, -1, Texturen["src/Boden.png"]);
 
 	Texturen["src/figur.png"] = LadeTexturPNG("src/figur.png");
 	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.png"]);
@@ -60,6 +69,7 @@ int main(int argc, char*argv[]) {
 	Texturen["src/Treppe.png"] = LadeTexturPNG("src/Treppe.png");
 	Texturen["src/Rechteckklein.png"] = LadeTexturPNG("src/Rechteckklein.png");
 	Texturen["src/StehendesRechteck.png"] = LadeTexturPNG("src/StehendesRechteck.png");
+
 
 
 	glutMainLoop(); //Hauptschleife
@@ -90,6 +100,7 @@ void display() {
 
 	//TODO display()
 	hintergrund->Display();
+	boden->Display();
 
 	glPushMatrix();
 	glTranslatef(figur->kameraposx, figur->kameraposy, 0);
@@ -170,3 +181,4 @@ void newHindernis() {
 		naechstesHindernis = x + 1.5 + (rand()%100)/100;
 	}
 }
+
