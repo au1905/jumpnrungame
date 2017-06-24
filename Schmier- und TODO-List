@@ -22,11 +22,20 @@ TODO: 3D-Elemente einbaue
 FERTIG: Die Hindernisse zufällig erscheinen lassen
 
 Zu den Kollisionsabfragen:
-collisionQuader überprüft, ob ein Quader mit der Figur kollidiert; als Argumente bekommt es einen Figur*, 
-die Variablen der unteren linken Ecke, die Breite und die Hoehe.
-collision kann verwendet werden, um tatsächlich zu überprüfen, ob eine Kollision stattgefunden hat; die 
-Version in Hindernisse.cpp nimmt aber einfach an, dass das Hindernis ein Quader ist und ruft collisionQuader 
-auf. In den Klassen mit Hindernissen, die kein Quader sind, muss collision also überschrieben werden.
+Ich habe die Methoden collision und collisionQuader in Hindernisse.cpp eingefügt. Allerdings habe ich bisher keine
+der beiden getestet, es sind also vermutlich noch Fehler darin.
+
+collisionQuader überprüft, ob ein Quader mit der Figur kollidiert; als Argumente bekommt es einen Figur*, die
+Variablen der unteren linken Ecke, die Breite und die Hoehe.
+collision kann verwendet werden, um tatsächlich zu überprüfen, ob eine Kollision stattgefunden hat; die Version
+in Hindernisse.cpp nimmt aber einfach an, dass das Hindernis ein Quader ist und ruft collisionQuader auf. In den
+Klassen mit Hindernissen, die kein Quader sind, muss collision also überschrieben werden.
+
+Bisher geht der gesamte Code übrigens noch davon aus, dass die Figur ein Rechteck (und kein Kreis) ist.
+
+An Aurel:
+Irgendwie habe ich nicht ganz verstanden, was dein Code machen soll. Ich hoffe mal, das war nicht das, was ich
+programmiert habe (falls doch, tut mir Leid), aber vielleicht kannst du das ja irgendwann in meinen Code einfügen.
 
 Ich habe das Ganze so weit fertig, dass die Figur und der Hintergrund angezeigt werden. 
 Für neue Objekte:
