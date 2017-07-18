@@ -18,6 +18,7 @@ public:
 	void move(int time);
 	void tasteDruck(unsigned char key);
 	void tasteLos(unsigned char key);
+	void springen();
 
 	float kameraposx=0;
 	float kameraposy=0;

@@ -22,7 +22,7 @@ public:
 	enum Kollision {
 		KEINE_KOLLISION = 0, VON_LINKS, VON_RECHTS, VON_OBEN, VON_UNTEN
 	};
-	virtual void collision(Figur* figur);
+	virtual Kollision collision(Figur* figur);
 	Kollision collisionQuader(Figur* figur, double linkesX, double unteresY,
 			double breite, double hoehe);
 private:

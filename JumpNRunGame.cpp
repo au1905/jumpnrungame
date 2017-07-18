@@ -81,6 +81,11 @@ void tasteDruck(unsigned char key, int, int) {
 	switch (key) {
 	case 'q':
 		exit(0);
+//	case 'k':
+//		for (uint i = hindernisse.size(); i > 0; i--){
+//			hindernisse[i-1]->collision(figur);
+//		}
+//		break;
 	default:
 		figur->tasteDruck(key);
 		break;
@@ -131,9 +136,14 @@ void timerEvent() {
 		//TODO TimerEvent ("echter" Code, der 60 Mal pro Sekunde ausgeführt wird)
 		figur->move(zeitdiff);
 		newHindernis();
+
 		for (uint i = hindernisse.size(); i > 0; i--){
-			hindernisse[i-1]->collision(figur);
+			Hindernisse::Kollision kollidiert = hindernisse[i-1]->collision(figur);
+			if (kollidiert == Hindernisse::VON_OBEN) {
+				figur->springen();
+			}
 		}
+
 		zeit = zeitneu;
 		glutPostRedisplay();
 	}

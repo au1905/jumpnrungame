@@ -14,7 +14,7 @@
 #include <string>
 #include "Hindernisse.h"
 
-int min(int values[], int arraysize);
+double min(double values[], int arraysize);
 
 Hindernisse::Hindernisse(double x, double y, double size, GLuint texturNr) :
 		Object(x, y, 0.3 * size, 0.4 * size, texturNr) {
@@ -31,7 +31,7 @@ Hindernisse::~Hindernisse() {
 	// TODO Auto-generated destructor stub
 }
 
-void Hindernisse::collision(Figur* figur) {
+Hindernisse::Kollision Hindernisse::collision(Figur* figur) {
 	collisionQuader(figur, _x, _y, _breite, _hoehe);
 }
 
@@ -50,11 +50,11 @@ Hindernisse::Kollision Hindernisse::collisionQuader(Figur* figur, double linkesX
 	double rechtesX = linkesX + breite;
 	double oberesY = unteresY + hoehe;
 
-	if (figurRechtesX < linkesX && figurLinkesX > rechtesX) {
+	if (figurRechtesX < linkesX || figurLinkesX > rechtesX) {
 		// Die Figuren beruehren sich nicht.
 		return KEINE_KOLLISION;
 	}
-	if (figurUnteresY + figurOberesY < unteresY && figurUnteresY > oberesY) {
+	if (figurUnteresY + figurOberesY < unteresY || figurUnteresY > oberesY) {
 		// Die Figuren beruehren sich nicht.
 		return KEINE_KOLLISION;
 	}
@@ -66,27 +66,39 @@ Hindernisse::Kollision Hindernisse::collisionQuader(Figur* figur, double linkesX
 	// Herausfinden, aus welcher Richtung die Kollision erfolgt ist:
 
 	// Wie weit wäre die Figur von links, von rechts, von oben und von unten "eingedrungen"?
-	int vonLinks = figurRechtesX - linkesX;
-	int vonRechts = rechtesX - figurLinkesX;
-	int vonUnten = figurOberesY - unteresY;
-	int vonOben = oberesY - figurUnteresY;
+	double vonLinks = figurRechtesX - linkesX;
+//	std::cout << "von Links: " << vonLinks;
+
+	double vonRechts = rechtesX - figurLinkesX;
+//	std::cout << "von rechts: " << vonRechts;
+
+	double vonUnten = figurOberesY - unteresY;
+//	std::cout << "von unten: " << vonUnten;
+
+	double vonOben = oberesY - figurUnteresY;
+//	std::cout << "von oben: " << vonOben;
+
 
 	// Wenn beispielsweise vonLinks am kleinsten ist, ist es am wahrscheinlichsten, dass links die
 	// Richtung war, aus der die Figur tatsächlich gekommen ist.
 
-	int values[] = {vonLinks,vonRechts,vonUnten,vonOben};
-	int minimum = min(values, 4);
+	double values[] = {vonLinks,vonRechts,vonUnten,vonOben};
+	double minimum = min(values, 4);
 
 	if (vonLinks == minimum) {
+//		std::cout << "von Links" << std::endl;
 		return VON_LINKS;
 	}
 	if (vonOben == minimum) {
+//		std::cout << "von Oben" << std::endl;
 		return VON_OBEN;
 	}
 	if (vonRechts == minimum) {
+//		std::cout << "von Rechts" << std::endl;
 		return VON_RECHTS;
 	}
 	if (vonUnten == minimum) {
+//		std::cout << "von Unten" << std::endl;
 		return VON_UNTEN;
 	}
 
@@ -105,11 +117,15 @@ Hindernisse::Kollision Hindernisse::collisionQuader(Figur* figur, double linkesX
 	 //abprallen in x-Richtung
 	 }
 	 }*/
+
+	//Sollte eigentlich nicht passieren
+	std::cerr << "Fehler in Hindernisse.collisionQuader" << std::endl;
+	return KEINE_KOLLISION;
 }
 
 
-int min(int values[], int arraysize) {
-	int minimum = values[0];
+double min(double values[], int arraysize) {
+	double minimum = values[0];
 	for (int i = 1; i < arraysize; ++i) {
 		if (values[i] < minimum) {
 			minimum = values[i];

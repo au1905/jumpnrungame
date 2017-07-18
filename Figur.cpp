@@ -17,6 +17,7 @@ Figur::~Figur() {
 
 }
 
+
 void Figur::move(int time) {
 	dy -= 0.0005;
 
@@ -29,7 +30,7 @@ void Figur::move(int time) {
 
 	//Die Figur springen lassen.
 	if (_y < -0.89 && tasteHochGedrueckt) {
-		dy = 0.01;
+		springen();
 	}
 
 //	_x += ((dx * time) / 5);
@@ -87,3 +88,6 @@ void Figur::tasteLos(unsigned char key) {
 
 }
 
+void Figur::springen() {
+	dy = 0.01;
+}
