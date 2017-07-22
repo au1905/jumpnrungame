@@ -44,8 +44,8 @@ void Figur::move(int time) {
 	_y += ((dy * time) / 5);
 
 
-	if (kameraposx +_x > 0.5){
-		kameraposx -= kameraposx +_x - 0.5;
+	if (kameraposx +_x > 0.0){
+		kameraposx -= kameraposx +_x - 0.0;
 	}
 	if (kameraposx +_x < -0.5){
 		kameraposx -= kameraposx +_x + 0.5;
