@@ -15,6 +15,8 @@ public:
 	HindernisTreppe(double x, double y, double size, GLuint texturNr);
 	virtual ~HindernisTreppe();
 
+	Hindernisse::Kollision collision(Figur * figur) override;
+
 };
 
 #endif /* SRC_HINDERNISTREPPE_H_ */

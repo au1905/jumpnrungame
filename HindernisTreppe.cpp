@@ -20,3 +20,14 @@ HindernisTreppe::~HindernisTreppe() {
 	// TODO Auto-generated destructor stub
 }
 
+Hindernisse::Kollision HindernisTreppe::collision(Figur * figur) {
+
+	// Der "untere" Quader
+	Hindernisse::Kollision kollision = collisionQuader(figur, _x, _y, _breite, _hoehe/2);
+	if (kollision != KEINE_KOLLISION) {
+		return kollision;
+	}
+
+	// Der "obere" Quader
+	return collisionQuader(figur, _x + _breite/5, _y + _hoehe/2.0, _breite*3/5, _hoehe/2);
+}

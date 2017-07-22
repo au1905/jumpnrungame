@@ -26,6 +26,7 @@ void tasteDruck(unsigned char key, int, int);
 void tasteLos(unsigned char key, int, int);
 void seedrand();
 void newHindernis();
+void gameOver();
 
 int zeit = 0;
 Figur* figur;
@@ -139,9 +140,24 @@ void timerEvent() {
 
 		for (uint i = hindernisse.size(); i > 0; i--){
 			Hindernisse::Kollision kollidiert = hindernisse[i-1]->collision(figur);
-			if (kollidiert == Hindernisse::VON_OBEN) {
-				figur->springen();
+			switch (kollidiert) {
+				case Hindernisse::VON_OBEN:
+					figur->springen();
+					break;
+				case Hindernisse::VON_UNTEN:
+					// TODO Was soll passieren, wenn die Figur von unten an ein Hindernis springt?
+					// Abprallen oder sterben?
+					break;
+				case Hindernisse::VON_LINKS:
+					gameOver();
+					break;
+				case Hindernisse::VON_RECHTS:
+					gameOver();
+					break;
+				default:
+					break;
 			}
+
 		}
 
 		zeit = zeitneu;
@@ -192,3 +208,7 @@ void newHindernis() {
 	}
 }
 
+void gameOver() {
+	//TODO
+	exit(0);
+}
