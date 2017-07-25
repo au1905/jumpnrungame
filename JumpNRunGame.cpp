@@ -16,6 +16,7 @@
 #include "Rechteckklein.h"
 #include "StehendesRechteck.h"
 #include "Boden.h"
+#include "GameOver.h"
 
 using namespace std;
 
@@ -32,8 +33,8 @@ bool vargameOver = false;
 int zeit = 0;
 Figur* figur;
 Hintergrund* hintergrund;
-
 Boden* boden;
+GameOver* gameOverScreen;
 
 double naechstesHindernis;
 
@@ -71,6 +72,8 @@ int main(int argc, char*argv[]) {
 	Texturen["src/Rechteckklein.png"] = LadeTexturPNG("src/Rechteckklein.png");
 	Texturen["src/StehendesRechteck.png"] = LadeTexturPNG("src/StehendesRechteck.png");
 
+	Texturen["src/GameOver.png"] = LadeTexturPNG("src/GameOver.png");
+
 	initGame();
 
 	glutMainLoop(); //Hauptschleife
@@ -100,10 +103,11 @@ void tasteLos(unsigned char key, int, int) {
 	}
 }
 void display() {
+
+
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//TODO display()
 	hintergrund->Display();
 	boden->Display();
 
@@ -123,7 +127,14 @@ void display() {
 
 	glPopMatrix();
 
+	if (vargameOver) {
+		cout<<"going to show gameOver"<<endl;//TODO Fehler wegen fehlendem Bild
+		gameOverScreen->Display();
+		cout<<"showed gameOver"<<endl;
+	}
+
 	glFlush();
+
 
 
 }
@@ -134,7 +145,6 @@ void timerEvent() {
 	int zeitdiff = zeitneu - zeit;
 	if (zeitdiff > 16 && !vargameOver) {
 
-		//TODO TimerEvent ("echter" Code, der 60 Mal pro Sekunde ausgeführt wird)
 		figur->move(zeitdiff);
 		newHindernis();
 
@@ -214,10 +224,15 @@ void initGame() {
 	boden= new Boden(-1, -1, Texturen["src/Boden.png"]);
 	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.png"]);
 	naechstesHindernis = 0;
+	vargameOver = false;
+
+
+	glutPostRedisplay();
 }
 
 void gameOver() {
 	vargameOver = true;
+	gameOverScreen = new GameOver(Texturen["src/GameOver.png"]);//TODO Fehler wegen fehlendem Bild
 
-
+	glutPostRedisplay();
 }
