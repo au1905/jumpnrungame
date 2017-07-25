@@ -57,6 +57,7 @@ int main(int argc, char*argv[]) {
 
 	glutDisplayFunc(display); //Verweise auf die Funktion display, die die Anzeige erledigt.
 
+	glutIgnoreKeyRepeat(1);
 	glutKeyboardFunc(tasteDruck); //Benutzereingaben
 	glutKeyboardUpFunc(tasteLos); //Benutzereingaben
 
@@ -82,13 +83,17 @@ int main(int argc, char*argv[]) {
 
 void tasteDruck(unsigned char key, int, int) {
 
+	if (vargameOver) {
+		initGame();
+	}
+
 	switch (key) {
 	case 'q':
 		exit(0);
-	case 'k':
-		initGame();
-
-		break;
+//	case 'k':
+//		initGame();
+//
+//		break;
 	default:
 		figur->tasteDruck(key);
 		break;
@@ -128,9 +133,12 @@ void display() {
 	glPopMatrix();
 
 	if (vargameOver) {
-		cout<<"going to show gameOver"<<endl;//TODO Fehler wegen fehlendem Bild
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 		gameOverScreen->Display();
-		cout<<"showed gameOver"<<endl;
+
+		glDisable(GL_BLEND);
 	}
 
 	glFlush();
