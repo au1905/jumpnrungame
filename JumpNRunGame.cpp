@@ -26,6 +26,7 @@ void tasteLos(unsigned char key, int, int);
 void seedrand();
 void newHindernis();
 void gameOver();
+void initGame();
 
 bool vargameOver = false;
 int zeit = 0;
@@ -34,7 +35,7 @@ Hintergrund* hintergrund;
 
 Boden* boden;
 
-
+double naechstesHindernis;
 
 
 
@@ -44,6 +45,8 @@ std::map<std::string, GLuint> Texturen;
 
 
 int main(int argc, char*argv[]) {
+
+
 	seedrand(); //Initialisiere die Random-Funktion
 
 	glutInit(&argc, argv); //Generiere das OpenGL-Fenster
@@ -59,19 +62,16 @@ int main(int argc, char*argv[]) {
 	glutIdleFunc(timerEvent); //Animationen
 
 	Texturen["src/Hintergrund.png"] = LadeTexturPNG("src/Hintergrund.png");
-	hintergrund = new Hintergrund(-1, -1, Texturen["src/Hintergrund.png"]);
 	Texturen["src/Boden.png"] = LadeTexturPNG("src/Boden.png");
-	boden= new Boden(-1, -1, Texturen["src/Boden.png"]);
 
 	Texturen["src/figur.png"] = LadeTexturPNG("src/figur.png");
-	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.png"]);
 
 	Texturen["src/Hindernins_einfach.png"] = LadeTexturPNG("src/Hindernis_einfach.png");
 	Texturen["src/Treppe.png"] = LadeTexturPNG("src/Treppe.png");
 	Texturen["src/Rechteckklein.png"] = LadeTexturPNG("src/Rechteckklein.png");
 	Texturen["src/StehendesRechteck.png"] = LadeTexturPNG("src/StehendesRechteck.png");
 
-
+	initGame();
 
 	glutMainLoop(); //Hauptschleife
 
@@ -82,11 +82,10 @@ void tasteDruck(unsigned char key, int, int) {
 	switch (key) {
 	case 'q':
 		exit(0);
-//	case 'k':
-//		for (uint i = hindernisse.size(); i > 0; i--){
-//			hindernisse[i-1]->collision(figur);
-//		}
-//		break;
+	case 'k':
+		initGame();
+
+		break;
 	default:
 		figur->tasteDruck(key);
 		break;
@@ -175,7 +174,6 @@ void seedrand() {
 void newHindernis() {
 	//static bedeutet, dass die Variable am Anfang des Programms einmal initialisiert wird
 	//und dann ihren Wert "behält"
-	static double naechstesHindernis = 0;
 
 	double x = figur->getx();
 
@@ -207,6 +205,15 @@ void newHindernis() {
 		//dazu wird noch eine zufaellige Zahl von 0 bis 1 addiert
 		naechstesHindernis = x + 1.5 + (rand()%100)/100;
 	}
+}
+
+void initGame() {
+	zeit = 0;
+	hindernisse.clear();
+	hintergrund = new Hintergrund(-1, -1, Texturen["src/Hintergrund.png"]);
+	boden= new Boden(-1, -1, Texturen["src/Boden.png"]);
+	figur = new Figur(-0.5, -0.9, 0.6, Texturen["src/figur.png"]);
+	naechstesHindernis = 0;
 }
 
 void gameOver() {
