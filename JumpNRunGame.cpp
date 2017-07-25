@@ -15,7 +15,6 @@
 #include "HindernisTreppe.h"
 #include "Rechteckklein.h"
 #include "StehendesRechteck.h"
-#include "HindernisStufe.h"
 #include "Boden.h"
 
 using namespace std;
@@ -28,6 +27,7 @@ void seedrand();
 void newHindernis();
 void gameOver();
 
+bool vargameOver = false;
 int zeit = 0;
 Figur* figur;
 Hintergrund* hintergrund;
@@ -129,10 +129,11 @@ void display() {
 
 }
 
+
 void timerEvent() {
 	int zeitneu = glutGet(GLUT_ELAPSED_TIME);
 	int zeitdiff = zeitneu - zeit;
-	if (zeitdiff > 16) {
+	if (zeitdiff > 16 && !vargameOver) {
 
 		//TODO TimerEvent ("echter" Code, der 60 Mal pro Sekunde ausgeführt wird)
 		figur->move(zeitdiff);
@@ -209,6 +210,7 @@ void newHindernis() {
 }
 
 void gameOver() {
-	//TODO
-	exit(0);
+	vargameOver = true;
+
+
 }
