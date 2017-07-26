@@ -143,6 +143,42 @@ void display() {
 
 }
 
+void aufKollisionenPrüfen() {
+	bool vonOben = false;
+	bool vonUnten = false;
+	bool vonLinks = false;
+	bool vonRechts = false;
+	for (uint i = hindernisse.size(); i > 0; i--) {
+		Hindernisse::Kollision kollidiert = hindernisse[i - 1]->collision(figur);
+		switch (kollidiert) {
+		case Hindernisse::VON_OBEN:
+			vonOben = true;
+			break;
+		case Hindernisse::VON_UNTEN:
+			vonUnten = true;
+			break;
+		case Hindernisse::VON_LINKS:
+			vonLinks = true;
+			break;
+		case Hindernisse::VON_RECHTS:
+			vonRechts = true;
+			break;
+		default:
+			break;
+		}
+	}
+
+	if (vonOben) {
+		figur->springen();
+	} else if (vonUnten) {
+		// TODO Was soll passieren, wenn die Figur von unten an ein Hindernis springt?
+		// Abprallen oder sterben?
+	} else if (vonLinks) {
+		gameOver();
+	} else if (vonRechts) {
+		gameOver();
+	}
+}
 
 void timerEvent() {
 	int zeitneu = glutGet(GLUT_ELAPSED_TIME);
@@ -152,27 +188,7 @@ void timerEvent() {
 		figur->move(zeitdiff);
 		newHindernis();
 
-		for (uint i = hindernisse.size(); i > 0; i--){
-			Hindernisse::Kollision kollidiert = hindernisse[i-1]->collision(figur);
-			switch (kollidiert) {
-			case Hindernisse::VON_OBEN:
-				figur->springen();
-				break;
-			case Hindernisse::VON_UNTEN:
-				// TODO Was soll passieren, wenn die Figur von unten an ein Hindernis springt?
-				// Abprallen oder sterben?
-				break;
-			case Hindernisse::VON_LINKS:
-				gameOver();
-				break;
-			case Hindernisse::VON_RECHTS:
-				gameOver();
-				break;
-			default:
-				break;
-			}
-
-		}
+		aufKollisionenPrüfen();
 
 		zeit = zeitneu;
 		glutPostRedisplay();
