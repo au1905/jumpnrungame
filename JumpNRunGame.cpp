@@ -83,21 +83,17 @@ int main(int argc, char*argv[]) {
 
 void tasteDruck(unsigned char key, int, int) {
 
-	if (vargameOver) {
-		initGame();
+	if (key == 'q') {
+		exit(0);
 	}
 
-	switch (key) {
-	case 'q':
-		exit(0);
-//	case 'k':
-//		initGame();
-//
-//		break;
-	default:
-		figur->tasteDruck(key);
-		break;
+	if (vargameOver) {
+		initGame();
+		return;
 	}
+
+	figur->tasteDruck(key);
+
 }
 void tasteLos(unsigned char key, int, int) {
 	switch (key) {
@@ -159,21 +155,21 @@ void timerEvent() {
 		for (uint i = hindernisse.size(); i > 0; i--){
 			Hindernisse::Kollision kollidiert = hindernisse[i-1]->collision(figur);
 			switch (kollidiert) {
-				case Hindernisse::VON_OBEN:
-					figur->springen();
-					break;
-				case Hindernisse::VON_UNTEN:
-					// TODO Was soll passieren, wenn die Figur von unten an ein Hindernis springt?
-					// Abprallen oder sterben?
-					break;
-				case Hindernisse::VON_LINKS:
-					gameOver();
-					break;
-				case Hindernisse::VON_RECHTS:
-					gameOver();
-					break;
-				default:
-					break;
+			case Hindernisse::VON_OBEN:
+				figur->springen();
+				break;
+			case Hindernisse::VON_UNTEN:
+				// TODO Was soll passieren, wenn die Figur von unten an ein Hindernis springt?
+				// Abprallen oder sterben?
+				break;
+			case Hindernisse::VON_LINKS:
+				gameOver();
+				break;
+			case Hindernisse::VON_RECHTS:
+				gameOver();
+				break;
+			default:
+				break;
 			}
 
 		}
