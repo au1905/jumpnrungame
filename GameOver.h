@@ -12,7 +12,7 @@
 
 class GameOver: public Object {
 public:
-	GameOver(GLuint );
+	GameOver(GLuint texturNr);
 	virtual ~GameOver();
 };
 
